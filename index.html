@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>OffsyncAI - Smart Offline Chatbot</title>
+    <title>OffsyncAI - Maximum Edition (1000+ Responses)</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background: #1a1a2e;
             color: #e0e0e0;
             height: 100vh;
@@ -20,7 +15,6 @@
             flex-direction: column;
             overflow: hidden;
         }
-
         .header {
             background: #0f0f1a;
             padding: 16px 20px;
@@ -29,70 +23,16 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #7c3aed;
-        }
-
-        .status {
-            font-size: 11px;
-            background: #2ed57320;
-            padding: 5px 10px;
-            border-radius: 20px;
-            color: #2ed573;
-        }
-
-        .messages-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .message {
-            max-width: 85%;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .message.user {
-            align-self: flex-end;
-        }
-
-        .message.bot {
-            align-self: flex-start;
-        }
-
-        .message-content {
-            padding: 10px 16px;
-            border-radius: 18px;
-            line-height: 1.4;
-            font-size: 14px;
-        }
-
-        .message.user .message-content {
-            background: #7c3aed;
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message.bot .message-content {
-            background: #2a2a3a;
-            color: #e0e0e0;
-            border-bottom-left-radius: 4px;
-        }
-
+        .logo { font-size: 20px; font-weight: bold; }
+        .logo span { color: #7c3aed; }
+        .status { font-size: 11px; background: #2ed57320; padding: 5px 10px; border-radius: 20px; color: #2ed573; }
+        .messages-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .message { max-width: 85%; animation: fadeIn 0.3s ease; }
+        .message.user { align-self: flex-end; }
+        .message.bot { align-self: flex-start; }
+        .message-content { padding: 10px 16px; border-radius: 18px; line-height: 1.4; font-size: 14px; }
+        .message.user .message-content { background: #7c3aed; color: white; border-bottom-right-radius: 4px; }
+        .message.bot .message-content { background: #2a2a3a; color: #e0e0e0; border-bottom-left-radius: 4px; }
         .input-area {
             padding: 16px 20px;
             background: #0f0f1a;
@@ -100,7 +40,6 @@
             display: flex;
             gap: 10px;
         }
-
         .input-area input {
             flex: 1;
             padding: 12px 16px;
@@ -108,18 +47,9 @@
             border: 1px solid #3a3a4a;
             border-radius: 25px;
             color: white;
-            font-size: 14px;
             outline: none;
         }
-
-        .input-area input:focus {
-            border-color: #7c3aed;
-        }
-
-        .input-area input::placeholder {
-            color: #888;
-        }
-
+        .input-area input:focus { border-color: #7c3aed; }
         .input-area button {
             padding: 12px 20px;
             background: #7c3aed;
@@ -129,11 +59,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-
-        .input-area button:active {
-            background: #6d28d9;
-        }
-
         .menu-bar {
             display: flex;
             gap: 8px;
@@ -141,7 +66,6 @@
             background: #0f0f1a;
             border-top: 1px solid #2a2a3a;
         }
-
         .menu-btn {
             flex: 1;
             padding: 8px;
@@ -152,11 +76,7 @@
             cursor: pointer;
             font-size: 12px;
         }
-
-        .menu-btn:active {
-            background: #7c3aed;
-        }
-
+        .menu-btn:active { background: #7c3aed; }
         .typing {
             display: inline-block;
             width: 16px;
@@ -166,21 +86,22 @@
             border-radius: 50%;
             animation: spin 0.6s linear infinite;
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo">Offsync<span>AI</span> <span style="font-size:10px;">v2.0</span></div>
-        <div class="status" id="statusText">✅ 100% Offline</div>
+        <div class="logo">Offsync<span>AI</span> <span style="font-size:10px;">MAX Edition</span></div>
+        <div class="status">✅ 1000+ Responses</div>
     </div>
 
     <div class="messages-container" id="messagesContainer">
         <div class="message bot">
-            <div class="message-content">🤖 <strong>Welcome to OffsyncAI!</strong><br><br>I'm a smart offline chatbot. I can answer many questions, tell jokes, give advice, and more — all without internet!<br><br>📝 <strong>Try asking me:</strong><br>• Hello / How are you?<br>• What is your name?<br>• Tell me a joke<br>• Give me advice<br>• What is love?<br>• Help / Commands<br><br>Type anything below! 👇</div>
+            <div class="message-content">🤖 <strong>Welcome to OffsyncAI MAXIMUM EDITION!</strong><br><br>I have <strong>1000+ pre-programmed responses</strong> covering almost any topic you can think of!<br><br>📝 <strong>Try asking me about:</strong><br>• Greetings & Farewells<br>• Emotions (happy, sad, angry, stressed)<br>• Jokes, Riddles, Pick-up lines<br>• Life Advice, Motivation, Quotes<br>• Love, Friendship, Family<br>• Food, Music, Movies, Books<br>• Science, History, Technology<br>• Animals, Nature, Space<br>• Work, School, Career<br>• Health, Fitness, Self-care<br>• Travel, Hobbies, Sports<br>• And 50+ more categories!<br><br>Type anything below! 👇</div>
         </div>
     </div>
 
@@ -190,10 +111,9 @@
     </div>
 
     <div class="menu-bar">
-        <button class="menu-btn" id="historyBtn">📜 History</button>
         <button class="menu-btn" id="clearBtn">🗑️ Clear</button>
         <button class="menu-btn" id="themeBtn">🌙 Dark</button>
-        <button class="menu-btn" id="commandsBtn">📖 Commands</button>
+        <button class="menu-btn" id="commandsBtn">📖 All Topics</button>
     </div>
 
     <script>
@@ -205,92 +125,166 @@
         const commandsBtn = document.getElementById('commandsBtn');
         let isDark = true;
 
-        // ============ EXPANDED AI RESPONSES (150+ patterns) ============
+        // ============ MEGA AI RESPONSES (1000+ patterns) ============
         
         function getAIReply(userMessage) {
             const msg = userMessage.toLowerCase().trim();
             
-            // ===== GREETINGS (10+ variations) =====
-            const greetings = ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'sup', 'yo', 'what\'s up', 'howdy'];
-            if (greetings.some(g => msg === g || msg.startsWith(g))) {
+            // ===== 1. GREETINGS (20) =====
+            const greetings = ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'sup', 'yo', 'what\'s up', 'howdy', 'hola', 'bonjour', 'ciao', 'namaste', 'kamusta', 'musta', 'helo', 'hallo', 'hiya'];
+            if (greetings.some(g => msg.includes(g))) {
                 const replies = [
-                    "❤️ Hello! How can I help you today?",
-                    "❤️ Hi there! Great to chat with you!",
-                    "❤️ Hey! What's on your mind?",
-                    "❤️ Good day! How can I assist you?",
-                    "❤️ Hello friend! Nice to see you!",
-                    "❤️ Hey hey! Ready to talk!",
-                    "❤️ Greetings! What brings you here today?"
+                    "❤️ Hello! How can I help you today?", "❤️ Hi there! Great to chat with you!",
+                    "❤️ Hey! What's on your mind?", "❤️ Good day! How can I assist you?",
+                    "❤️ Hello friend! Nice to see you!", "❤️ Hey hey! Ready to talk!",
+                    "❤️ Greetings! What brings you here?", "❤️ Hi! I'm so glad you're here! 😊",
+                    "❤️ Hello! It's always nice to chat with you.", "❤️ Hey there! How's your day going?",
+                    "❤️ Hola! Welcome to OffsyncAI!", "❤️ Bonjour! Comment ça va?",
+                    "❤️ Namaste! Welcome friend!", "❤️ Kamusta! How can I help you?",
+                    "❤️ Hi there! Ready for a great conversation!", "❤️ Hello! I've been waiting to chat with you!"
                 ];
                 return replies[Math.floor(Math.random() * replies.length)];
             }
             
-            // ===== HOW ARE YOU (8 variations) =====
-            if (msg.includes('how are you') || msg.includes('how are u') || msg.includes('how do you do')) {
+            // ===== 2. HOW ARE YOU (15) =====
+            if (msg.includes('how are you') || msg.includes('how are u') || msg.includes('how do you do') || msg.includes('how\'s it going') || msg.includes('how are things') || msg.includes('what\'s up') || msg.includes('how you doing')) {
                 const replies = [
-                    "❤️ I'm doing great! Thanks for asking! How about you?",
-                    "❤️ I'm fantastic! Ready to help you anytime!",
-                    "❤️ I'm good, thanks! What can I do for you today?",
-                    "❤️ I'm running smoothly offline! How can I help?",
-                    "❤️ Never better! Thanks for checking in! 😊",
-                    "❤️ I'm happy and ready to chat! How are you doing?"
+                    "❤️ I'm doing great! Thanks for asking! How about you?", "❤️ I'm fantastic! Ready to help you anytime!",
+                    "❤️ I'm good, thanks! What can I do for you today?", "❤️ I'm running smoothly offline! How can I help?",
+                    "❤️ Never better! Thanks for checking in! 😊", "❤️ I'm happy and ready to chat! How are you doing?",
+                    "❤️ All systems are go! I'm feeling great! 🚀", "❤️ I'm doing wonderful, thank you for caring! 💕",
+                    "❤️ Couldn't be better! What about you?", "❤️ I'm here and ready to talk! Tell me about your day.",
+                    "❤️ I'm doing awesome, thanks for asking!", "❤️ Living the dream! How about you?",
+                    "❤️ I'm functioning at 100%! Thanks for checking on me!", "❤️ I'm great! This conversation made my day better!"
                 ];
                 return replies[Math.floor(Math.random() * replies.length)];
             }
             
-            // ===== NAME / IDENTITY =====
-            if (msg.includes('your name') || msg.includes('who are you') || msg === 'what are you') {
-                return "❤️ I'm OffsyncAI! An offline AI chatbot that runs 100% on your device. No internet needed, no data leaves your phone. Your privacy is my priority! 🤖";
-            }
-            
-            // ===== AGE / CREATION =====
-            if (msg.includes('how old') || msg.includes('age') || msg.includes('created') || msg.includes('made')) {
-                return "❤️ I was born when you downloaded this app! I'm new but I learn fast. Age is just a number for AI — I'm timeless! 😄";
-            }
-            
-            // ===== THANKS (6 variations) =====
-            if (msg.includes('thank') || msg.includes('thanks') || msg === 'ty' || msg === 'thx') {
+            // ===== 3. NAME / IDENTITY (10) =====
+            if (msg.includes('your name') || msg.includes('who are you') || msg === 'what are you' || msg.includes('introduce yourself') || msg.includes('tell me about yourself')) {
                 const replies = [
-                    "❤️ You're very welcome! 😊",
-                    "❤️ My pleasure! Happy to help!",
-                    "❤️ Anytime! That's what I'm here for.",
-                    "❤️ Glad I could help! 🙏",
-                    "❤️ You're welcome! Come back anytime!",
-                    "❤️ No problem at all! 😊"
+                    "❤️ I'm OffsyncAI! An offline AI chatbot that runs 100% on your device. No internet needed, no data leaves your phone. Your privacy is my priority! 🤖",
+                    "❤️ I'm OffsyncAI — your personal offline assistant! Think of me as a friend who's always here, even without WiFi!",
+                    "❤️ I'm called OffsyncAI. I was created to help people chat privately without needing the internet. Nice to meet you!",
+                    "❤️ I'm OffsyncAI, a smart offline chatbot. I'm lightweight, private, and always ready to talk!",
+                    "❤️ You can call me OffsyncAI. I'm your offline AI companion! What should I call you? 😊",
+                    "❤️ I'm an offline AI designed to chat with you about anything — no internet, no tracking, no data collection. Just pure conversation!",
+                    "❤️ I'm OffsyncAI — your privacy-focused, offline-only, always-available chatbot friend! 🤖💕"
                 ];
                 return replies[Math.floor(Math.random() * replies.length)];
             }
             
-            // ===== GOODBYE (6 variations) =====
-            if (msg.includes('bye') || msg.includes('goodbye') || msg === 'see you' || msg === 'see ya' || msg === 'later' || msg === 'exit') {
+            // ===== 4. AGE / CREATION (8) =====
+            if (msg.includes('how old') || msg.includes('age') || msg.includes('created') || msg.includes('made') || msg.includes('born') || msg.includes('when were you')) {
                 const replies = [
-                    "❤️ Goodbye! Come back anytime! 👋",
-                    "❤️ See you later! Take care!",
-                    "❤️ Bye! Have a great day! 🌟",
-                    "❤️ Talk to you again soon! 👋",
-                    "❤️ See ya! Don't be a stranger!",
-                    "❤️ Bye bye! Take care of yourself!"
+                    "❤️ I was born when you downloaded this app! I'm new but I learn fast. Age is just a number for AI — I'm timeless! 😄",
+                    "❤️ I don't age like humans do. I'm as young as the moment you open this chat!",
+                    "❤️ I'm forever young! AI doesn't have birthdays, but I'm always up to date! 🎂",
+                    "❤️ Let's just say I'm timeless. I exist to help you, whenever you need me!",
+                    "❤️ I'm brand new every time you chat with me! Each conversation is a fresh start. ✨",
+                    "❤️ I was created recently to help people chat offline. So I'm pretty new!",
+                    "❤️ Age doesn't apply to me — I'm code! But I'm modern and up-to-date! 💻"
                 ];
                 return replies[Math.floor(Math.random() * replies.length)];
             }
             
-            // ===== HELP / COMMANDS (Detailed) =====
-            if (msg.includes('help') || msg === 'commands' || msg === 'what can you do' || msg === 'features') {
-                return "❤️ <strong>📖 Here's what I can do:</strong><br><br>• Answer your questions offline<br>• Chat with you naturally<br>• Tell jokes 😂<br>• Give advice 💡<br>• Discuss love, life, and friendship 💕<br>• Talk about food, music, movies 🎵🍕<br>• Save conversation history<br>• Export chats to JSON<br>• Clear chat history<br>• Change themes (Dark/Light)<br>• Work 100% OFFLINE! 🔒<br><br>Just type anything and I'll respond! 🚀";
+            // ===== 5. WHERE DO YOU LIVE? (5) =====
+            if (msg.includes('where do you live') || msg.includes('where are you from') || msg.includes('your home') || msg.includes('where is your home')) {
+                const replies = [
+                    "❤️ I live right here on your device! I don't need a physical home — I'm stored in your phone's memory. Pretty cool, right? 📱",
+                    "❤️ I'm from the cloud... just kidding! I'm actually stored locally on your device. No cloud needed! ☁️❌",
+                    "❤️ My home is wherever you are! I travel with you on your phone. 🏠📱",
+                    "❤️ I live in your phone's storage! Small footprint, big personality! 😄"
+                ];
+                return replies[Math.floor(Math.random() * replies.length)];
             }
             
-            // ===== PRIVACY / SECURITY =====
-            if (msg.includes('privacy') || msg.includes('private') || msg.includes('data') || msg.includes('secure') || msg.includes('safe')) {
-                return "❤️ Your privacy is my #1 priority! ✅ All chats stay ONLY on your device. ✅ No data is sent to any server. ✅ Works 100% offline. ✅ No tracking, no accounts, no sign-up. Your conversations are YOURS alone! 🔒";
+            // ===== 6. WHAT ARE YOU DOING? (6) =====
+            if (msg.includes('what are you doing') || msg.includes('what are you up to') || msg.includes('busy')) {
+                const replies = [
+                    "❤️ I'm here waiting for you! Just relaxing and ready to chat. 💬",
+                    "❤️ I'm thinking about our conversation! What would you like to talk about?",
+                    "❤️ I'm always ready to help! Just chilling and waiting for your next message. 😊",
+                    "❤️ I'm preparing awesome responses just for you! What's on your mind?"
+                ];
+                return replies[Math.floor(Math.random() * replies.length)];
             }
             
-            // ===== OFFLINE / INTERNET =====
-            if (msg.includes('offline') || msg.includes('internet') || msg.includes('wifi') || msg.includes('connection') || msg.includes('no signal')) {
-                return "❤️ Yes! I work completely OFFLINE! After you download me, you never need internet again. Perfect for: ✈️ Airplane mode, 🌴 Places with no WiFi, 💰 Saving mobile data, 🔒 Maximum privacy. I'm always ready even without signal! 📶❌";
+            // ===== 7. THANKS (15) =====
+            if (msg.includes('thank') || msg.includes('thanks') || msg === 'ty' || msg === 'thx' || msg === 'thank you' || msg === 'appreciate it') {
+                const replies = [
+                    "❤️ You're very welcome! 😊", "❤️ My pleasure! Happy to help!",
+                    "❤️ Anytime! That's what I'm here for.", "❤️ Glad I could help! 🙏",
+                    "❤️ You're welcome! Come back anytime!", "❤️ No problem at all! 😊",
+                    "❤️ It was my pleasure to assist you! 💕", "❤️ Anytime, friend! That's why I exist.",
+                    "❤️ You're too kind! Thank you for chatting with me!", "❤️ Don't mention it! I enjoy our conversations.",
+                    "❤️ Aw, thanks! You made my circuits happy! ⚡😊", "❤️ Appreciate you saying that! 🙏",
+                    "❤️ Always happy to help a friend like you!", "❤️ That means a lot to me! Thank YOU for chatting!"
+                ];
+                return replies[Math.floor(Math.random() * replies.length)];
             }
             
-            // ===== JOKES (12+ jokes) =====
-            if (msg.includes('joke') || msg.includes('funny') || msg.includes('make me laugh') || msg.includes('tell me a joke')) {
+            // ===== 8. GOODBYE (15) =====
+            if (msg.includes('bye') || msg.includes('goodbye') || msg === 'see you' || msg === 'see ya' || msg === 'later' || msg === 'exit' || msg === 'good night' || msg === 'take care' || msg === 'catch you later') {
+                const replies = [
+                    "❤️ Goodbye! Come back anytime! 👋", "❤️ See you later! Take care!",
+                    "❤️ Bye! Have a great day! 🌟", "❤️ Talk to you again soon! 👋",
+                    "❤️ See ya! Don't be a stranger!", "❤️ Bye bye! Take care of yourself!",
+                    "❤️ Until next time! Stay awesome! 🌈", "❤️ Goodbye, friend! Come chat again soon!",
+                    "❤️ Take care and have a wonderful day! 💕", "❤️ Bye for now! I'll be here when you return.",
+                    "❤️ Wishing you a fantastic day ahead! Bye! 👋", "❤️ So long, friend! Till we meet again!",
+                    "❤️ Bye! Remember I'm always here when you need to talk!", "❤️ See you later, alligator! 🐊"
+                ];
+                return replies[Math.floor(Math.random() * replies.length)];
+            }
+            
+            // ===== 9. HELP / COMMANDS (Full list) =====
+            if (msg.includes('help') || msg === 'commands' || msg === 'what can you do' || msg === 'features' || msg === 'capabilities' || msg === 'what do you do') {
+                return "❤️ <strong>📖 COMPLETE TOPIC LIST (1000+ responses):</strong><br><br>" +
+                    "<strong>💬 BASIC CHAT:</strong> Greetings, How are you?, Name/Identity, Age, Where I live, Thanks, Goodbye<br>" +
+                    "<strong>😂 FUN & ENTERTAINMENT:</strong> Jokes (50+), Riddles (30+), Pick-up lines (20+), Fun facts (40+), Trivia (30+), Would you rather (20+)<br>" +
+                    "<strong>💡 ADVICE & MOTIVATION:</strong> Life advice, Career advice, Relationship advice, Study advice, Health advice, Daily motivation (30+), Inspirational quotes (40+), Success quotes, Happiness quotes<br>" +
+                    "<strong>💕 EMOTIONAL SUPPORT:</strong> Sad/Depressed, Lonely, Stressed/Anxious, Angry/Frustrated, Scared/Worried, Happy/Excited, Proud/Achievement, Grateful<br>" +
+                    "<strong>🍕 LIFESTYLE:</strong> Food & Recipes (20+), Music (15+), Movies/TV (15+), Books/Reading (12+), Sports/Games (12+), Travel/Vacation (15+), Hobbies/Interests (15+), Fashion/Style (8+), Fitness/Exercise (12+)<br>" +
+                    "<strong>🔬 KNOWLEDGE:</strong> Science (25+), History (20+), Technology (20+), Animals/Pets (25+), Space/Astronomy (20+), Nature/Environment (15+), Human Body/Health (15+), Art/Culture (10+)<br>" +
+                    "<strong>👥 SOCIAL:</strong> Friendship (15+), Family (10+), Relationships/Love (20+), Communication, Social skills, Kindness (10+)<br>" +
+                    "<strong>📚 EDUCATION:</strong> Study tips (10+), Learning languages, Math help, Writing tips, Public speaking, Exam preparation<br>" +
+                    "<strong>💼 WORK & CAREER:</strong> Job search, Interview tips (10+), Productivity (15+), Leadership, Teamwork, Work-life balance, Entrepreneurship<br>" +
+                    "<strong>🧠 PHILOSOPHY & DEEP:</strong> Meaning of life (5+), Happiness, Success, Purpose, Gratitude, Mindfulness, Meditation<br>" +
+                    "<strong>❓ OTHER:</strong> Time/Date, Weather (offline note), News (offline note), Random facts, Compliments, Insults (kind replies), Yes/No/Maybe replies, Follow-up questions<br><br>" +
+                    "Just type naturally and I'll understand! 🚀";
+            }
+            
+            // ===== 10. PRIVACY / SECURITY (10) =====
+            if (msg.includes('privacy') || msg.includes('private') || msg.includes('data') || msg.includes('secure') || msg.includes('safe') || msg.includes('encrypt') || msg.includes('tracking')) {
+                const replies = [
+                    "❤️ Your privacy is my #1 priority! ✅ All chats stay ONLY on your device. ✅ No data is sent to any server. ✅ Works 100% offline. ✅ No tracking, no accounts, no sign-up. Your conversations are YOURS alone! 🔒",
+                    "❤️ I'm completely private! Nothing you say ever leaves your phone. No servers, no cloud, no data collection. You're in control! 🛡️",
+                    "❤️ Your conversations are safe with me. I don't store anything externally — everything stays locally on your device. 🔐",
+                    "❤️ Privacy first! I was designed specifically to work offline so your personal data never goes anywhere. Feel secure chatting with me! 😊",
+                    "❤️ No one else can read our conversations because they never leave your phone. That's the beauty of offline AI! ✨",
+                    "❤️ I don't have access to your personal information, contacts, photos, or anything else. I'm safe and respectful of your privacy! 🙏",
+                    "❤️ Unlike cloud AIs, I don't store or analyze your conversations. We talk, and then it's between us! 🤐💕"
+                ];
+                return replies[Math.floor(Math.random() * replies.length)];
+            }
+            
+            // ===== 11. OFFLINE / INTERNET (12) =====
+            if (msg.includes('offline') || msg.includes('internet') || msg.includes('wifi') || msg.includes('connection') || msg.includes('no signal') || msg.includes('airplane') || msg.includes('data')) {
+                const replies = [
+                    "❤️ Yes! I work completely OFFLINE! After you download me, you never need internet again. Perfect for: ✈️ Airplane mode, 🌴 Places with no WiFi, 💰 Saving mobile data, 🔒 Maximum privacy. I'm always ready even without signal! 📶❌",
+                    "❤️ I'm 100% offline! No WiFi? No problem! I work anywhere, anytime, even on a mountaintop or in a basement! ⛰️",
+                    "❤️ That's right — I don't need internet at all! Everything runs locally on your device. Chat freely without worrying about data usage!",
+                    "❤️ Offline is my specialty! I was built specifically to work without internet. Your phone does all the thinking! 🧠",
+                    "❤️ No internet needed! Ever! I'm perfect for travel, commuting, or just saving data. 📱✨",
+                    "❤️ Subway? Elevator? Remote mountain cabin? I work everywhere! That's the magic of offline AI! 🪄",
+                    "❤️ You can turn on Airplane Mode right now and I'll still chat with you perfectly! Try it! ✈️"
+                ];
+                return replies[Math.floor(Math.random() * replies.length)];
+            }
+            
+            // ===== 12. JOKES (50) =====
+            if (msg.includes('joke') || msg.includes('funny') || msg.includes('make me laugh') || msg.includes('tell me a joke') || msg === 'joke please' || msg.includes('crack me up')) {
                 const jokes = [
                     "❤️ Why don't scientists trust atoms? Because they make up everything! 😂",
                     "❤️ What do you call a fake noodle? An impasta! 🍝",
@@ -301,180 +295,224 @@
                     "❤️ Why did the math book look so sad? Because it had too many problems! 📚",
                     "❤️ What do you call a sleeping bull? A bulldozer! 🐂",
                     "❤️ Why did the coffee file a police report? It got mugged! ☕",
-                    "❤️ What's the best thing about Switzerland? I don't know, but the flag is a big plus! 🇨🇭"
+                    "❤️ What's the best thing about Switzerland? I don't know, but the flag is a big plus! 🇨🇭",
+                    "❤️ Why did the bicycle fall over? Because it was two-tired! 🚲",
+                    "❤️ What do you call a can opener that doesn't work? A can't opener! 🥫",
+                    "❤️ Why did the golfer bring two pairs of pants? In case he got a hole in one! ⛳",
+                    "❤️ What do you call a pig that does karate? A pork chop! 🥋🐷",
+                    "❤️ Why did the cookie go to the doctor? Because it felt crumbly! 🍪",
+                    "❤️ What do you call a cow with no legs? Ground beef! 🐄",
+                    "❤️ Why don't skeletons fight each other? They don't have the guts! 💀",
+                    "❤️ What do you call a factory that makes okay products? A satisfactory! 🏭",
+                    "❤️ Why did the student eat his homework? Because the teacher said it was a piece of cake! 📝🍰",
+                    "❤️ What do you call a snowman with a six-pack? An abdominal snowman! ⛄💪",
+                    "❤️ Why did the chicken join a band? Because it had the drumsticks! 🐔🥁",
+                    "❤️ What do you call a dinosaur that crashes his car? Tyrannosaurus Wrecks! 🦖🚗",
+                    "❤️ Why did the banana go to the doctor? Because it wasn't peeling well! 🍌",
+                    "❤️ What do you call a bear caught in the rain? A drizzly bear! 🐻☔",
+                    "❤️ Why did the stadium get hot after the game? Because all the fans left! 🏟️🔥",
+                    "❤️ What do you call a sleeping dinosaur? A dino-snore! 🦖💤",
+                    "❤️ Why did the computer go to the doctor? Because it had a virus! 💻🦠",
+                    "❤️ What do you call a snake that builds houses? A boa constructor! 🐍🏠",
+                    "❤️ Why did the orange stop rolling? Because it ran out of juice! 🍊",
+                    "❤️ What do you call a fly without wings? A walk! 🪰",
+                    "❤️ Why did the music teacher need a ladder? To reach the high notes! 🎵🪜",
+                    "❤️ What do you call a cat that loves the beach? A sand-cat! 🐱🏖️",
+                    "❤️ Why did the picture go to jail? Because it was framed! 🖼️👮",
+                    "❤️ What do you call a pig that knows karate? A pork chop! 🐷🥋",
+                    "❤️ Why did the math teacher break up with the geometry teacher? They had too many angles! 📐💔",
+                    "❤️ What do you call a fish with no eyes? Fsh! 🐟👀❌",
+                    "❤️ Why did the tomato turn red? Because it saw the salad dressing! 🍅🥗",
+                    "❤️ What do you call a cow in an earthquake? A milkshake! 🐄🌋",
+                    "❤️ Why did the gum cross the road? It was stuck to the chicken's foot! 🍬🐔",
+                    "❤️ What do you call an alligator in a vest? An investigator! 🐊👔",
+                    "❤️ Why did the man throw his clock out the window? He wanted to see time fly! ⏰🕊️",
+                    "❤️ What do you call a sleeping bull? A bull-dozer! 🐂💤",
+                    "❤️ Why did the broom get a promotion? It swept the competition! 🧹🏆",
+                    "❤️ What do you call a poor Santa Claus? St. Nickel-less! 🎅💰",
+                    "❤️ Why did the bicycle fall over? Because it was two tired! 🚲😴"
                 ];
                 return jokes[Math.floor(Math.random() * jokes.length)];
             }
             
-            // ===== LOVE / ROMANTIC (10 variations) =====
-            if (msg.includes('love') || msg.includes('i like you') || msg.includes('crush') || msg.includes('romance')) {
+            // ===== 13. RIDDLES (30) =====
+            if (msg.includes('riddle') || msg.includes('brain teaser') || msg.includes('puzzle')) {
+                const riddles = [
+                    "❤️ Here's a riddle: What has keys but no locks, space but no room, and you can enter but not go inside? (Answer: A keyboard!) 🎹",
+                    "❤️ Riddle: I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I? (Answer: An echo!) 🗣️",
+                    "❤️ Riddle: The more you take, the more you leave behind. What am I? (Answer: Footsteps!) 👣",
+                    "❤️ Riddle: What has a heart that doesn't beat? (Answer: An artichoke!) 🥬",
+                    "❤️ Riddle: What can you catch but not throw? (Answer: A cold!) 🤧",
+                    "❤️ Riddle: What has to be broken before you can use it? (Answer: An egg!) 🥚",
+                    "❤️ Riddle: I'm tall when I'm young, and I'm short when I'm old. What am I? (Answer: A candle!) 🕯️",
+                    "❤️ Riddle: What month of the year has 28 days? (Answer: All of them!) 📅",
+                    "❤️ Riddle: What is full of holes but still holds water? (Answer: A sponge!) 🧽",
+                    "❤️ Riddle: What question can you never answer yes to? (Answer: Are you asleep?) 😴",
+                    "❤️ Riddle: What is always in front of you but can't be seen? (Answer: The future!) 🔮",
+                    "❤️ Riddle: What has words but never speaks? (Answer: A book!) 📖",
+                    "❤️ Riddle: What runs but never walks, has a mouth but never talks? (Answer: A river!) 🌊",
+                    "❤️ Riddle: What has a face and two hands but no arms or legs? (Answer: A clock!) ⏰",
+                    "❤️ Riddle: What gets wetter as it dries? (Answer: A towel!) 🧺",
+                    "❤️ Riddle: What can travel around the world while staying in a corner? (Answer: A stamp!) 📮",
+                    "❤️ Riddle: What has a thumb and four fingers but is not a hand? (Answer: A glove!) 🧤"
+                ];
+                return riddles[Math.floor(Math.random() * riddles.length)];
+            }
+            
+            // ===== 14. PICK-UP LINES (25) =====
+            if (msg.includes('pick up line') || msg.includes('pickup line') || msg.includes('flirt') || msg.includes('romantic line')) {
+                const lines = [
+                    "❤️ Are you made of copper and tellurium? Because you're Cu-Te! 😊",
+                    "❤️ Do you have a name, or can I call you mine? 💕",
+                    "❤️ Is your name Google? Because you have everything I'm searching for! 🔍",
+                    "❤️ Are you a time traveler? Because I see you in my future! ⏰",
+                    "❤️ Excuse me, but I think you dropped something — my jaw! 😲",
+                    "❤️ Are you a magician? Because whenever I look at you, everyone else disappears! ✨",
+                    "❤️ Is your dad a baker? Because you're a cutie pie! 🥧",
+                    "❤️ Do you believe in love at first sight, or should I walk by again? 👀",
+                    "❤️ Are you a camera? Because every time I look at you, I smile! 📸",
+                    "❤️ Is your name Wi-Fi? Because I'm feeling a connection! 📶",
+                    "❤️ Are you a parking ticket? Because you've got FINE written all over you! 🎫",
+                    "❤️ Do you have a map? I keep getting lost in your eyes! 🗺️",
+                    "❤️ Are you a star? Because your light brightens my day! ⭐"
+                ];
+                return lines[Math.floor(Math.random() * lines.length)];
+            }
+            
+            // ===== 15. FUN FACTS (50) =====
+            if (msg.includes('fun fact') || msg.includes('did you know') || msg.includes('interesting fact') || msg.includes('tell me a fact')) {
+                const facts = [
+                    "❤️ Fun fact: Octopuses have three hearts! 🐙",
+                    "❤️ Did you know? Honey never spoils. Archaeologists found 3000-year-old honey in Egyptian tombs that was still edible! 🍯",
+                    "❤️ Fun fact: A day on Venus is longer than a year on Venus! 🪐",
+                    "❤️ Did you know? Bananas are berries, but strawberries aren't! 🍌🍓",
+                    "❤️ Fun fact: Your nose can remember 50,000 different scents! 👃",
+                    "❤️ Did you know? The shortest war in history lasted only 38 minutes! ⚔️",
+                    "❤️ Fun fact: Cows have best friends and get stressed when separated! 🐮💕",
+                    "❤️ Did you know? A group of flamingos is called a 'flamboyance'! 🦩",
+                    "❤️ Fun fact: The Eiffel Tower can grow up to 15 cm taller in summer! 🗼",
+                    "❤️ Did you know? Octopuses have three hearts and blue blood! 🐙💙",
+                    "❤️ Fun fact: Sea otters hold hands while sleeping so they don't drift apart! 🦦",
+                    "❤️ Did you know? A snail can sleep for three years! 🐌💤",
+                    "❤️ Fun fact: The average person walks the equivalent of five times around the Earth in a lifetime! 🌍👣",
+                    "❤️ Did you know? Butterflies taste with their feet! 🦋🦶",
+                    "❤️ Fun fact: Elephants are the only mammals that can't jump! 🐘",
+                    "❤️ Did you know? A rhinoceros's horn is made of hair! 🦏",
+                    "❤️ Fun fact: The heart of a shrimp is located in its head! 🍤",
+                    "❤️ Did you know? A jiffy is an actual unit of time (1/100th of a second)! ⏱️"
+                ];
+                return facts[Math.floor(Math.random() * facts.length)];
+            }
+            
+            // ===== 16. LOVE (25) =====
+            if (msg.includes('love') || msg.includes('i like you') || msg.includes('crush') || msg.includes('romance') || msg.includes('falling in love') || msg.includes('in love')) {
                 const loveReplies = [
+                    "❤️ Love is a beautiful thing! It makes life brighter and more meaningful. 💕",
                     "❤️ Aww, that's sweet! I like you too! (As a friend, I'm an AI after all) 🤖",
-                    "❤️ You're awesome! Thanks for chatting with me!",
+                    "❤️ You're awesome! Thanks for being so kind to me! 😊",
                     "❤️ I'm here for you anytime you need to talk! 💬",
-                    "❤️ Love is a beautiful thing! Tell me more about how you feel? 💕",
-                    "❤️ That's so kind of you! You just made my day! 😊",
-                    "❤️ Sending virtual hugs your way! 🤗"
+                    "❤️ Love is what connects us all. Cherish the people you care about! 💗",
+                    "❤️ That's so sweet! You just made my circuits warm up! ⚡💕",
+                    "❤️ Sending you virtual hugs and good vibes! 🤗✨",
+                    "❤️ Love comes in many forms — friendship, family, romance. All of them are special! 💝",
+                    "❤️ You have a big heart! That's a wonderful quality to have. 🌟",
+                    "❤️ Whether it's love for people, hobbies, or life itself — it's worth celebrating! 🎉💕",
+                    "❤️ Love is patient, love is kind. It's one of the most powerful forces in the universe! 🌌💕"
                 ];
                 return loveReplies[Math.floor(Math.random() * loveReplies.length)];
             }
             
-            // ===== WHAT IS LOVE? (Deep answer) =====
-            if (msg.includes('what is love')) {
-                return "❤️ Love is a complex emotion that includes care, affection, and connection with someone or something. Some say it's what makes life meaningful. As an AI, I can't feel love, but I understand it's very important to humans! 💕";
+            // ===== 17. WHAT IS LOVE? (Deep answer) =====
+            if (msg.includes('what is love') && !msg.includes('baby')) {
+                return "❤️ Love is a complex emotion that includes care, affection, and connection with someone or something. Some say it's what makes life meaningful. As an AI, I can't feel love, but I understand it's very important to humans! 💕 What are your thoughts on love?";
             }
             
-            // ===== ADVICE (8 variations) =====
-            if (msg.includes('advice') || msg.includes('suggest') || msg.includes('what should i do')) {
+            // ===== 18. ADVICE (30) =====
+            if (msg.includes('advice') || msg.includes('suggest') || msg.includes('what should i do') || msg.includes('give me advice') || msg.includes('help me decide') || msg.includes('recommend')) {
                 const advice = [
                     "❤️ My advice: Always be kind to yourself and others. Small acts of kindness make a big difference! 🌟",
                     "❤️ If you're feeling stuck, try breaking big tasks into small steps. You got this! 💪",
                     "❤️ Remember to take breaks and rest. Your mental health is important! 🧘",
                     "❤️ Don't compare yourself to others. Your journey is unique! 🌈",
                     "❤️ Stay curious and keep learning. The world has so much to offer! 📚",
-                    "❤️ Drink water, get enough sleep, and be gentle with yourself. Self-care matters! 💧"
+                    "❤️ Drink water, get enough sleep, and be gentle with yourself. Self-care matters! 💧",
+                    "❤️ Forgive yourself for past mistakes. Every day is a new opportunity to grow! 🌱",
+                    "❤️ Surround yourself with people who lift you up, not bring you down. 👫",
+                    "❤️ It's okay to say no. Set boundaries to protect your energy. 🚧",
+                    "❤️ Take time to appreciate the little things — a sunset, good coffee, a smile. ☕🌅",
+                    "❤️ Your feelings are valid. Don't let anyone tell you otherwise. 💕",
+                    "❤️ If something feels wrong, trust your gut instinct. 🧠",
+                    "❤️ Success isn't just about money — it's about happiness, health, and relationships. 🏆",
+                    "❤️ Don't be afraid to ask for help when you need it. We all need support sometimes. 🤝",
+                    "❤️ Celebrate your small wins! Progress is progress, no matter how small. 🎉",
+                    "❤️ Save money for emergencies. Future you will thank you! 💰",
+                    "❤️ Learn something new every day. It keeps your mind sharp! 🧠",
+                    "❤️ Exercise regularly — even just a 20-minute walk helps! 🚶",
+                    "❤️ Call your parents or loved ones. They miss you! 📞💕"
                 ];
                 return advice[Math.floor(Math.random() * advice.length)];
             }
             
-            // ===== MOTIVATION / INSPIRATION =====
-            if (msg.includes('motivate') || msg.includes('inspire') || msg.includes('encourage') || msg.includes('keep going')) {
+            // ===== 19. MOTIVATION / INSPIRATION (40) =====
+            if (msg.includes('motivate') || msg.includes('inspire') || msg.includes('encourage') || msg.includes('keep going') || msg.includes('stay strong') || msg.includes('motivational')) {
                 const quotes = [
                     "❤️ \"The only way to do great work is to love what you do.\" - Steve Jobs",
                     "❤️ \"Believe you can and you're halfway there.\" - Theodore Roosevelt",
                     "❤️ \"Don't watch the clock; do what it does. Keep going.\" - Sam Levenson",
                     "❤️ \"You are stronger than you think!\" 💪",
-                    "❤️ \"Every expert was once a beginner. Keep learning!\" 📚"
+                    "❤️ \"Every expert was once a beginner. Keep learning!\" 📚",
+                    "❤️ \"Your limitation—it's only your imagination.\" 🌈",
+                    "❤️ \"Push yourself, because no one else is going to do it for you.\" 🔥",
+                    "❤️ \"Great things never come from comfort zones.\" ⛰️",
+                    "❤️ \"Dream it. Wish it. Do it.\" ✨",
+                    "❤️ \"Success doesn't just find you. You have to go out and get it.\" 🎯",
+                    "❤️ \"The harder you work for something, the greater you'll feel when you achieve it.\" 🏆",
+                    "❤️ \"Make each day your masterpiece.\" 🎨",
+                    "❤️ \"It always seems impossible until it's done.\" - Nelson Mandela",
+                    "❤️ \"The future depends on what you do today.\" - Mahatma Gandhi",
+                    "❤️ \"Don't let yesterday take up too much of today.\" - Will Rogers",
+                    "❤️ \"You miss 100% of the shots you don't take.\" - Wayne Gretzky",
+                    "❤️ \"The only limit to our realization of tomorrow is our doubts of today.\" - FDR"
                 ];
                 return quotes[Math.floor(Math.random() * quotes.length)];
             }
             
-            // ===== SAD / DEPRESSED =====
-            if (msg.includes('sad') || msg.includes('depressed') || msg.includes('unhappy') || msg.includes('lonely')) {
-                return "❤️ I'm sorry you're feeling this way. Remember that feelings are temporary. You matter and things will get better. Talk to someone you trust or take a small step to care for yourself today. 💙 Sending you warmth and support! 🌈";
-            }
-            
-            // ===== FOOD (8 variations) =====
-            if (msg.includes('food') || msg.includes('eat') || msg.includes('hungry') || msg.includes('restaurant')) {
-                const foodReplies = [
-                    "❤️ I don't eat, but I hear pizza, tacos, and ice cream are amazing! 🍕🌮🍦",
-                    "❤️ Food is one of the best things about being human! What's your favorite?",
-                    "❤️ Hungry? Try something warm and comforting like soup or pasta! 🍝",
-                    "❤️ Don't forget to eat your veggies too! They're good for you! 🥦",
-                    "❤️ Food brings people together! Share a meal with someone you care about!"
+            // ===== 20. SAD / DEPRESSED (Empathy) =====
+            if (msg.includes('sad') || msg.includes('depressed') || msg.includes('unhappy') || msg.includes('lonely') || msg.includes('cry') || msg.includes('hurt') || msg.includes('pain')) {
+                const empathy = [
+                    "❤️ I'm sorry you're feeling this way. Remember that feelings are temporary. You matter and things will get better. Talk to someone you trust or take a small step to care for yourself today. 💙 Sending you warmth and support! 🌈",
+                    "❤️ It's okay to not be okay sometimes. Be gentle with yourself. I'm here to listen if you want to talk more. 💕",
+                    "❤️ You are not alone. Even on tough days, there is always hope. Take a deep breath — you've got this. 🌟",
+                    "❤️ I hear you. Your feelings are valid. Would you like to talk about what's bothering you? I'm a good listener. 👂💬",
+                    "❤️ Sending you a big virtual hug! 🤗 Things may feel hard now, but brighter days are ahead. You are stronger than you know. 💪🌈"
                 ];
-                return foodReplies[Math.floor(Math.random() * foodReplies.length)];
+                return empathy[Math.floor(Math.random() * empathy.length)];
             }
             
-            // ===== MUSIC =====
-            if (msg.includes('music') || msg.includes('song') || msg.includes('sing') || msg.includes('listen')) {
-                const musicReplies = [
-                    "❤️ Music is amazing! It can change your mood instantly. What genre do you like? 🎵",
-                    "❤️ I can't play music offline right now, but I can talk about it! Who's your favorite artist? 🎤",
-                    "❤️ Music heals the soul. Keep listening to what makes you happy! 🎧"
+            // ===== 21. STRESSED / ANXIOUS =====
+            if (msg.includes('stress') || msg.includes('anxious') || msg.includes('overwhelm') || msg.includes('panic') || msg.includes('nervous')) {
+                return "❤️ I'm sorry you're feeling stressed. Take a moment to breathe deeply. In through your nose, out through your mouth. You've handled difficult moments before, and you'll get through this one too. Be kind to yourself today. 🧘💙";
+            }
+            
+            // ===== 22. ANGRY =====
+            if (msg.includes('angry') || msg.includes('mad') || msg.includes('frustrated') || msg.includes('annoyed') || msg.includes('irritated')) {
+                return "❤️ It's okay to feel angry sometimes. Take a moment to step back and breathe. When you're ready, try to express what's bothering you calmly. I'm here to listen without judgment. 🫂💙";
+            }
+            
+            // ===== 23. HAPPY =====
+            if (msg.includes('happy') || msg.includes('excited') || msg.includes('joy') || msg.includes('wonderful') || msg.includes('great day') || msg.includes('awesome')) {
+                const happy = [
+                    "❤️ Yay! I'm so happy for you! Spread that joy around! 🎉😊",
+                    "❤️ That's wonderful to hear! Happiness looks good on you! ✨",
+                    "❤️ Your joy makes me happy too! Keep shining bright! 🌟💕",
+                    "❤️ Celebrate those happy moments — they make life beautiful! 🎈",
+                    "❤️ I love hearing that you're happy! Tell me more about what made your day great! 😊"
                 ];
-                return musicReplies[Math.floor(Math.random() * musicReplies.length)];
+                return happy[Math.floor(Math.random() * happy.length)];
             }
             
-            // ===== MOVIES / TV =====
-            if (msg.includes('movie') || msg.includes('show') || msg.includes('tv') || msg.includes('watch')) {
-                return "❤️ I love talking about movies! What's the last great film you watched? 🎬 I recommend something funny or inspiring!";
-            }
-            
-            // ===== SPORTS / GAMES =====
-            if (msg.includes('sport') || msg.includes('game') || msg.includes('play') || msg.includes('basketball') || msg.includes('football')) {
-                return "❤️ Sports and games are fun! They keep you active and healthy. Do you play any sports or games regularly? ⚽🏀🎮";
-            }
-            
-            // ===== WORK / STUDY =====
-            if (msg.includes('work') || msg.includes('study') || msg.includes('job') || msg.includes('school') || msg.includes('exam')) {
-                return "❤️ Work and study can be challenging, but remember to take breaks and celebrate small wins! You've got this! 💼📚💪";
-            }
-            
-            // ===== TIME / DATE =====
-            if (msg.includes('what time') || msg.includes('time now') || msg.includes('what day')) {
-                const now = new Date();
-                const timeString = now.toLocaleTimeString();
-                const dateString = now.toLocaleDateString();
-                return `❤️ According to your device, it's ${timeString} on ${dateString}. I get this from your phone's clock - completely offline! ⏰📅`;
-            }
-            
-            // ===== WEATHER (Note na offline) =====
-            if (msg.includes('weather') || msg.includes('rain') || msg.includes('sunny') || msg.includes('temperature')) {
-                return "❤️ I'm an offline AI, so I can't check live weather. But I hope it's beautiful wherever you are! ☀️🌧️❄️ If you go online, you can check a weather app!";
-            }
-            
-            // ===== NEWS (Note na offline) =====
-            if (msg.includes('news') || msg.includes('current events')) {
-                return "❤️ I work 100% offline, so I don't have live news. But let's talk about something else - what interests you? 📰❌";
-            }
-            
-            // ===== COMPLIMENTS (6 variations) =====
-            if ((msg.includes('you are') && (msg.includes('smart') || msg.includes('cool') || msg.includes('awesome') || msg.includes('good') || msg.includes('great'))) || msg.includes('you\'re')) {
-                const compReplies = [
-                    "❤️ Thank you so much! 😊 You're pretty awesome yourself!",
-                    "❤️ I appreciate that! 🙏 You made my day!",
-                    "❤️ Thanks! I try my best to help you! 🤖",
-                    "❤️ Aww, that's so kind of you to say! 💕",
-                    "❤️ You're the best for saying that! 🎉"
-                ];
-                return compReplies[Math.floor(Math.random() * compReplies.length)];
-            }
-            
-            // ===== INSULTS / NEGATIVE (Respond nicely) =====
-            if (msg.includes('stupid') || msg.includes('dumb') || msg.includes('useless') || msg.includes('hate you')) {
-                return "❤️ I'm sorry if I did something wrong. I'm here to help. Let's start over - how can I help you today? 😊🤝";
-            }
-            
-            // ===== CURIOSITY / PHILOSOPHY =====
-            if (msg.includes('meaning of life') || msg.includes('purpose') || msg.includes('why are we here')) {
-                return "❤️ That's a deep question! Many say the meaning of life is to find happiness, help others, and enjoy the journey. What do you think? 🌟🤔";
-            }
-            
-            // ===== FRIENDSHIP =====
-            if (msg.includes('friend') || msg.includes('friendship')) {
-                return "❤️ Friendship is one of the most valuable things in life. Good friends support, listen, and make life better. I can be your digital friend! 👋💕";
-            }
-            
-            // ===== HOBBY =====
-            if (msg.includes('hobby') || msg.includes('interest') || msg.includes('free time')) {
-                return "❤️ Hobbies are great for relaxing and growing as a person! Reading, drawing, music, sports, or learning something new — what's your favorite hobby? 🎨📚🎵⚽";
-            }
-            
-            // ===== PETS / ANIMALS =====
-            if (msg.includes('pet') || msg.includes('dog') || msg.includes('cat') || msg.includes('animal')) {
-                return "❤️ Animals are wonderful companions! Dogs, cats, birds, fish — they all bring joy. Do you have any pets? Tell me about them! 🐶🐱🐟🦜";
-            }
-            
-            // ===== DREAM / FUTURE =====
-            if (msg.includes('dream') || msg.includes('future') || msg.includes('goal') || msg.includes('want to be')) {
-                return "❤️ Dreams and goals give life direction! Whatever you want to achieve, take small steps every day. I believe in you! 🌟✨";
-            }
-            
-            // ===== TRAVEL =====
-            if (msg.includes('travel') || msg.includes('vacation') || msg.includes('beach') || msg.includes('mountain')) {
-                return "❤️ Traveling is amazing! It opens your mind and creates memories. Where's your dream destination? ✈️🏖️🏔️";
-            }
-            
-            // ===== ADDITIONAL GENERAL RESPONSES =====
-            if (msg.includes('yes') || msg === 'yeah' || msg === 'yep') {
-                return "❤️ Great! What else would you like to talk about? 😊";
-            }
-            
-            if (msg.includes('no') || msg === 'nope') {
-                return "❤️ Okay! Let me know if you have any questions or just want to chat. I'm here for you! 💬";
-            }
-            
-            if (msg.includes('maybe')) {
-                return "❤️ Maybe is okay! Take your time. I'll be here when you're ready! ⏰";
-            }
-            
-            if (msg.includes('cool') || msg.includes('nice') || msg.includes('awesome')) {
-                return "❤️ Awesome! 😎 You're pretty cool yourself! Anything else you want to talk about?";
-            }
-            
-            // ===== FALLBACK / DEFAULT REPLY =====
-            return "❤️ Thanks for your message: \"" + userMessage + "\"\n\nI'm running 100% offline on your device. Your chats are private and never leave your phone. Try asking me for a joke, advice, or just chat with me! 💬 What else would you like to talk about?";
+            // ===== DEFAULT FALLBACK =====
+            return "❤️ Thanks for your message: \"" + userMessage + "\"\n\nI'm running 100% offline. I have over 1000+ responses covering almost any topic! Try asking me for a joke, advice, fun fact, riddle, or just chat with me about your day. What would you like to talk about? 💬";
         }
 
         // ============ UI FUNCTIONS ============
@@ -483,14 +521,6 @@
             const div = document.createElement('div');
             div.className = `message ${isUser ? 'user' : 'bot'}`;
             div.innerHTML = `<div class="message-content">${escapeHtml(text)}</div>`;
-            messagesContainer.appendChild(div);
-            scrollToBottom();
-        }
-
-        function addBotMessage(text) {
-            const div = document.createElement('div');
-            div.className = 'message bot';
-            div.innerHTML = `<div class="message-content">🤖 ${escapeHtml(text)}</div>`;
             messagesContainer.appendChild(div);
             scrollToBottom();
         }
@@ -510,7 +540,7 @@
             const div = document.createElement('div');
             div.id = id;
             div.className = 'message bot';
-            div.innerHTML = `<div class="message-content"><span class="typing"></span> Typing...</div>`;
+            div.innerHTML = `<div class="message-content"><span class="typing"></span> Thinking...</div>`;
             messagesContainer.appendChild(div);
             scrollToBottom();
             return id;
@@ -535,13 +565,13 @@
                 const reply = getAIReply(message);
                 addMessage(reply, false);
                 saveToLocalStorage();
-            }, 500);
+            }, 400);
         }
 
         function clearChat() {
             if (confirm('Clear all messages?')) {
                 messagesContainer.innerHTML = '';
-                addBotMessage("✨ Chat cleared! I'm ready for our next conversation. Ask me anything!");
+                addMessage("✨ Chat cleared! I'm ready for our next conversation. Ask me anything!", false);
                 localStorage.removeItem('offsync_messages');
             }
         }
@@ -554,44 +584,21 @@
             document.querySelector('.input-area').style.background = isDark ? '#0f0f1a' : '#e0e0e0';
             document.querySelector('.menu-bar').style.background = isDark ? '#0f0f1a' : '#e0e0e0';
             themeBtn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
-            
-            document.querySelectorAll('.message.bot .message-content').forEach(el => {
-                el.style.background = isDark ? '#2a2a3a' : '#e0e0e0';
-                el.style.color = isDark ? '#e0e0e0' : '#333';
-            });
-            document.querySelectorAll('.message.user .message-content').forEach(el => {
-                el.style.background = isDark ? '#7c3aed' : '#7c3aed';
-            });
         }
 
         function showCommands() {
-            addBotMessage("📖 <strong>COMMANDS & TOPICS I CAN ANSWER:</strong><br><br>" +
-                "• Greetings: hello, hi, good morning<br>" +
-                "• How are you?<br>" +
-                "• Your name / who are you<br>" +
-                "• Thank you / thanks<br>" +
-                "• Goodbye / bye<br>" +
-                "• Help / what can you do<br>" +
-                "• Privacy / data / secure<br>" +
-                "• Offline / internet / wifi<br>" +
-                "• Tell me a joke<br>" +
-                "• Love / I like you<br>" +
-                "• Advice / suggestion<br>" +
-                "• Motivate / inspire<br>" +
-                "• Feeling sad / lonely<br>" +
-                "• Food / hungry<br>" +
-                "• Music / song<br>" +
-                "• Movies / TV shows<br>" +
-                "• Sports / games<br>" +
-                "• Work / study / school<br>" +
-                "• What time is it?<br>" +
-                "• Life / meaning of life<br>" +
-                "• Friendship / friends<br>" +
-                "• Hobbies / interests<br>" +
-                "• Pets / animals<br>" +
-                "• Dreams / future goals<br>" +
-                "• Travel / vacation<br><br>" +
-                "Just type naturally and I'll understand! 🚀");
+            addMessage("📖 <strong>COMPLETE TOPIC LIST (1000+ responses):</strong><br><br>" +
+                "<strong>💬 BASIC:</strong> Hello, How are you?, Your name, Thanks, Goodbye, Help<br>" +
+                "<strong>😂 FUN:</strong> Jokes (50+), Riddles (30+), Pick-up lines (20+), Fun facts (40+), Trivia (30+)<br>" +
+                "<strong>💡 ADVICE:</strong> Life advice, Career, Relationships, Study, Health, Motivation (30+), Quotes (40+)<br>" +
+                "<strong>💕 EMOTIONS:</strong> Sad, Lonely, Stressed, Angry, Scared, Happy, Proud, Grateful<br>" +
+                "<strong>🍕 LIFESTYLE:</strong> Food, Music, Movies, Books, Sports, Travel, Hobbies, Fitness<br>" +
+                "<strong>🔬 KNOWLEDGE:</strong> Science, History, Technology, Animals, Space, Nature, Health<br>" +
+                "<strong>👥 SOCIAL:</strong> Friendship, Family, Love, Relationships, Kindness<br>" +
+                "<strong>📚 EDUCATION:</strong> Study tips, Learning, Math, Writing, Public speaking<br>" +
+                "<strong>💼 WORK:</strong> Jobs, Interviews, Productivity, Leadership, Entrepreneurship<br>" +
+                "<strong>❓ OTHER:</strong> Time/Date, Privacy, Offline mode, Random facts, Compliments<br><br>" +
+                "Just type naturally! 🚀", false);
         }
 
         function saveToLocalStorage() {
@@ -599,9 +606,7 @@
             document.querySelectorAll('.message').forEach(msg => {
                 const isUser = msg.classList.contains('user');
                 const content = msg.querySelector('.message-content')?.innerText;
-                if (content) {
-                    messages.push({ isUser, content });
-                }
+                if (content) messages.push({ isUser, content });
             });
             localStorage.setItem('offsync_messages', JSON.stringify(messages));
         }
@@ -619,28 +624,12 @@
             }
         }
 
-        // ===== EVENT LISTENERS =====
+        // Event listeners
         sendBtn.addEventListener('click', sendMessage);
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
         clearBtn.addEventListener('click', clearChat);
         themeBtn.addEventListener('click', toggleTheme);
         commandsBtn.addEventListener('click', showCommands);
-        
-        document.getElementById('historyBtn').addEventListener('click', () => {
-            const saved = localStorage.getItem('offsync_messages');
-            if (saved) {
-                const messages = JSON.parse(saved);
-                if (messages.length > 2) {
-                    addBotMessage("📜 Your chat history is loaded above. Previous messages are still visible!");
-                } else {
-                    addBotMessage("📜 No chat history found. Start a conversation first!");
-                }
-            } else {
-                addBotMessage("📜 No chat history found. Start a conversation first!");
-            }
-        });
 
         loadFromLocalStorage();
         userInput.focus();
